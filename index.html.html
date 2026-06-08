@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abdul Mateen Asia Business Grant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a227;
+      --gold-light: rgba(201,162,39,0.12);
+      --gold-border: rgba(201,162,39,0.25);
+      --bg: #0a0804;
+      --bg2: #0d0a04;
+      --bg3: #141008;
+      --bg4: #080604;
+      --bg5: #060402;
+      --text: #f5e9c8;
+      --muted: #a89060;
+      --dim: #6b5a38;
+      --darker: #4a3f22;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--bg5);
+      border-bottom: 0.5px solid rgba(201,162,39,0.3);
+      padding: 7px 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--dim);
+      letter-spacing: 0.5px;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .topbar span { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 3rem 2rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      background: var(--bg);
+      border-bottom: 1px solid var(--gold-border);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -80px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,162,39,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gold-light);
+      border: 0.5px solid var(--gold);
+      border-radius: 20px;
+      padding: 5px 15px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+    .hero-title span { color: var(--gold); }
+
+    .hero-sub {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+      max-width: 380px;
+    }
+
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 11px 26px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: opacity 0.2s;
+    }
+    .btn-gold:hover { opacity: 0.88; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 0.5px solid var(--gold);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      padding: 11px 26px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-outline:hover { background: var(--gold-light); }
+
+    /* ── PORTRAIT ── */
+    .portrait-box { text-align: center; }
+    .portrait-frame {
+      width: 210px;
+      height: 260px;
+      margin: 0 auto;
+      border: 2.5px solid var(--gold);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(201,162,39,0.15);
+    }
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .portrait-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 12px;
+      color: var(--gold);
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+    .portrait-role { font-size: 10px; color: var(--dim); margin-top: 3px; }
+
+    /* ── COUNTRIES ── */
+    .countries-bar {
+      background: var(--bg5);
+      border-bottom: 0.5px solid var(--gold-border);
+      padding: 1.2rem 2rem;
+    }
+    .countries-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .countries-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.6rem;
+    }
+    .country-chip {
+      background: var(--bg3);
+      border: 0.5px solid var(--gold-border);
+      border-radius: 6px;
+      padding: 0.6rem 0.4rem;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .country-flag { font-size: 20px; display: block; margin-bottom: 3px; }
+    .country-sub { font-size: 9px; color: var(--dim); margin-top: 2px; }
+
+    /* ── SECTION COMMON ── */
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 0.4rem;
+    }
+    .section-sub {
+      font-size: 13px;
+      color: var(--dim);
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,162,39,0.4), transparent);
+      margin: 0 2rem;
+    }
+
+    /* ── GIFTS ── */
+    .gifts-section { padding: 2.5rem 2rem; border-bottom: 1px solid var(--gold-border); }
+    .gift-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .gift-card {
+      background: var(--bg2);
+      border: 0.5px solid var(--gold-border);
+      border-radius: 10px;
+      padding: 1.4rem 1.2rem;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .gift-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(201,162,39,0.1); }
+    .gift-card.featured { border-color: var(--gold); }
+    .gift-tag {
+      display: inline-block;
+      background: var(--gold-light);
+      border: 0.5px solid var(--gold-border);
+      border-radius: 3px;
+      padding: 2px 9px;
+      font-size: 9px;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.8rem;
+    }
+    .gift-icon { font-size: 28px; margin-bottom: 0.6rem; display: block; }
+    .gift-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .gift-name { font-size: 13px; color: var(--text); font-weight: 500; margin-top: 4px; }
+    .gift-desc { font-size: 11px; color: var(--dim); margin-top: 8px; line-height: 1.6; }
+    .gift-sectors { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+    .sector-pill {
+      background: rgba(201,162,39,0.07);
+      border: 0.5px solid var(--gold-border);
+      border-radius: 10px;
+      padding: 2px 8px;
+      font-size: 9px;
+      color: var(--muted);
+    }
+
+    /* ── ABOUT ── */
+    .about-section {
+      padding: 2.5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      border-bottom: 1px solid var(--gold-border);
+      background: var(--bg4);
+    }
+    .about-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--text);
+      margin-bottom: 0.9rem;
+      line-height: 1.3;
+    }
+    .about-text { font-size: 13px; color: var(--muted); line-height: 1.85; }
+    .about-text + .about-text { margin-top: 0.9rem; }
+    .quote-block {
+      background: var(--bg2);
+      border-left: 2.5px solid var(--gold);
+      border-radius: 0 6px 6px 0;
+      padding: 1.1rem 1.3rem;
+      margin-top: 1.2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--gold);
+      line-height: 1.7;
+    }
+    .quote-attr {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      color: var(--dim);
+      font-style: normal;
+      margin-top: 6px;
+    }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .stat-item {
+      background: var(--bg2);
+      border: 0.5px solid var(--gold-border);
+      border-radius: 7px;
+      padding: 1.1rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .stat-label { font-size: 10px; color: var(--dim); margin-top: 4px; line-height: 1.4; }
+
+    /* ── ELIGIBILITY ── */
+    .eligibility-section {
+      padding: 2.5rem 2rem;
+      background: var(--bg5);
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .elig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .elig-card {
+      background: var(--bg2);
+      border: 0.5px solid var(--gold-border);
+      border-radius: 8px;
+      padding: 1.1rem;
+    }
+    .elig-icon { font-size: 22px; margin-bottom: 7px; }
+    .elig-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 5px; }
+    .elig-list { font-size: 11px; color: var(--muted); line-height: 1.8; list-style: none; }
+    .elig-list li::before { content: '✦ '; color: var(--gold); font-size: 8px; }
+
+    /* ── CEREMONY ── */
+    .ceremony-section {
+      padding: 2.5rem 2rem;
+      border-bottom: 1px solid var(--gold-border);
+      background: var(--bg4);
+      text-align: center;
+    }
+    .ceremony-visual {
+      background: var(--bg2);
+      border: 1px solid var(--gold-border);
+      border-radius: 10px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .ceremony-side { text-align: center; }
+    .ceremony-icon { font-size: 40px; margin-bottom: 7px; }
+    .ceremony-name { font-size: 13px; color: var(--text); font-weight: 500; }
+    .ceremony-role { font-size: 10px; color: var(--dim); margin-top: 2px; }
+    .ceremony-arrow { font-size: 28px; color: var(--gold); }
+    .ceremony-gift-label {
+      font-size: 9px;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .ceremony-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── PROCESS ── */
+    .process-section { padding: 2.5rem 2rem; border-bottom: 1px solid var(--gold-border); }
+    .steps { display: flex; flex-direction: column; margin-top: 1.5rem; }
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 0.5px solid rgba(201,162,39,0.08);
+      align-items: start;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 44px; height: 44px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .step-title { font-weight: 500; font-size: 14px; color: var(--text); margin-bottom: 5px; }
+    .step-desc { font-size: 12px; color: var(--muted); line-height: 1.65; }
+    .step-tag {
+      display: inline-block;
+      background: rgba(201,162,39,0.08);
+      border: 0.5px solid var(--gold-border);
+      border-radius: 3px;
+      padding: 1px 8px;
+      font-size: 10px;
+      color: var(--gold);
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── APPLY ── */
+    .apply-section { padding: 2.5rem 2rem; text-align: center; }
+    .apply-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+    .apply-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+      line-height: 1.75;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .apply-form {
+      max-width: 460px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .apply-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .apply-input,
+    .apply-select,
+    .apply-textarea {
+      background: var(--bg3);
+      border: 0.5px solid var(--gold-border);
+      border-radius: 4px;
+      padding: 11px 15px;
+      font-size: 13px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .apply-input:focus,
+    .apply-select:focus,
+    .apply-textarea:focus { border-color: var(--gold); }
+    .apply-input::placeholder,
+    .apply-textarea::placeholder { color: var(--darker); }
+    .apply-select option { background: #1a1208; }
+    .apply-textarea { resize: vertical; min-height: 80px; }
+    .apply-btn {
+      background: var(--gold);
+      color: var(--bg);
+      border: none;
+      border-radius: 4px;
+      padding: 13px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 0.5px;
+      transition: opacity 0.2s;
+    }
+    .apply-btn:hover { opacity: 0.88; }
+
+    /* ── SUCCESS MSG ── */
+    .success-msg {
+      display: none;
+      background: rgba(201,162,39,0.1);
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      padding: 1.2rem;
+      text-align: center;
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      margin-top: 0.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg5);
+      border-top: 1px solid var(--gold-border);
+      padding: 1.4rem 2rem;
+      text-align: center;
+      font-size: 11px;
+      color: var(--dim);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-btns { justify-content: center; }
+      .portrait-box { order: -1; }
+      .countries-grid { grid-template-columns: repeat(2, 1fr); }
+      .gift-cards { grid-template-columns: 1fr; }
+      .about-section { grid-template-columns: 1fr; }
+      .elig-grid { grid-template-columns: 1fr; }
+      .apply-row { grid-template-columns: 1fr; }
+      .ceremony-visual { grid-template-columns: 1fr; gap: 1rem; }
+      .ceremony-arrow { transform: rotate(90deg); }
+      .topbar { justify-content: center; text-align: center; }
+      .step { grid-template-columns: 46px 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 2rem 1.2rem; }
+      .gifts-section, .about-section, .eligibility-section,
+      .ceremony-section, .process-section, .apply-section { padding: 2rem 1.2rem; }
+      .countries-bar { padding: 1rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>✦ Royal Pan-Asian Initiative</span>
+  <span>Open to 10 Asian Nations · 2025–2026</span>
+  <span>Applications Open</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="badge">👑 HRH Prince Abdul Mateen · Asia Grant</div>
+    <h1 class="hero-title">A Royal Gift<br>for <span>Asian</span><br>Entrepreneurs</h1>
+    <p class="hero-sub">Prince Abdul Mateen of Brunei extends his hand across Asia — funding, mentoring, and personally gifting support to visionary business minds from 10 nations.</p>
+    <div class="hero-btns">
+      <button class="btn-gold" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">Apply Now →</button>
+      <button class="btn-outline" onclick="document.getElementById('process').scrollIntoView({behavior:'smooth'})">How It Works</button>
+    </div>
+  </div>
+  <div class="portrait-box">
+    <div class="portrait-frame">
+      <img src="data:image/jpeg;base64,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" alt="HRH Prince Abdul Mateen in royal ceremonial uniform" />
+    </div>
+    <div class="portrait-name">HRH Prince Abdul Mateen</div>
+    <div class="portrait-role">Patron · Brunei Darussalam</div>
+  </div>
+</section>
+
+<!-- COUNTRIES -->
+<div class="countries-bar">
+  <p class="countries-label">Eligible Countries Across Asia</p>
+  <div class="countries-grid">
+    <div class="country-chip"><span class="country-flag">🇧🇳</span>Brunei<div class="country-sub">Host Nation</div></div>
+    <div class="country-chip"><span class="country-flag">🇲🇾</span>Malaysia<div class="country-sub">Eligible</div></div>
+    <div class="country-chip"><span class="country-flag">🇮🇩</span>Indonesia<div class="country-sub">Eligible</div></div>
+    <div class="country-chip"><span class="country-flag">🇵🇭</span>Philippines<div class="country-sub">Eligible</div></div>
+    <div class="country-chip"><span class="country-flag">🇸🇬</span>Singapore<div class="country-sub">Eligible</div></div>
+    <div class="country-chip"><span class="country-flag">🇹🇭</span>Thailand<div class="country-sub">Eligible</div></div>
+    <div class="country-chip"><span class="country-flag">🇻🇳</span>Vietnam<div class="country-sub">Eligible</div></div>
+    <div class="country-chip"><span class="country-flag">🇵🇰</span>Pakistan<div class="country-sub">Eligible</div></div>
+    <div class="country-chip"><span class="country-flag">🇧🇩</span>Bangladesh<div class="country-sub">Eligible</div></div>
+    <div class="country-chip"><span class="country-flag">🇯🇵</span>Japan<div class="country-sub">Eligible</div></div>
+  </div>
+</div>
+
+<!-- GIFTS -->
+<section class="gifts-section">
+  <p class="section-label">Grant Tiers</p>
+  <h2 class="section-title">Three Royal Gifts to Business</h2>
+  <p class="section-sub">Choose the tier that matches your business stage — all presented personally by the Prince</p>
+  <div class="gift-cards">
+    <div class="gift-card">
+      <div class="gift-tag">STARTER</div>
+      <span class="gift-icon">🎁</span>
+      <div class="gift-amount">$8,000</div>
+      <div class="gift-name">The Seed Gift</div>
+      <div class="gift-desc">For early-stage businesses under 1 year old ready to launch and grow.</div>
+      <div class="gift-sectors">
+        <span class="sector-pill">Food &amp; Beverage</span>
+        <span class="sector-pill">Retail</span>
+        <span class="sector-pill">Creative Arts</span>
+      </div>
+    </div>
+    <div class="gift-card featured">
+      <div class="gift-tag">MOST APPLIED</div>
+      <span class="gift-icon">🏆</span>
+      <div class="gift-amount">$20,000</div>
+      <div class="gift-name">The Growth Gift</div>
+      <div class="gift-desc">For businesses 1–3 years old scaling operations, hiring, or entering new markets.</div>
+      <div class="gift-sectors">
+        <span class="sector-pill">Technology</span>
+        <span class="sector-pill">Health</span>
+        <span class="sector-pill">Manufacturing</span>
+      </div>
+    </div>
+    <div class="gift-card">
+      <div class="gift-tag">LEGACY</div>
+      <span class="gift-icon">💎</span>
+      <div class="gift-amount">$50,000</div>
+      <div class="gift-name">The Legacy Gift</div>
+      <div class="gift-desc">Awarded to established businesses creating lasting community impact across Asia.</div>
+      <div class="gift-sectors">
+        <span class="sector-pill">Education</span>
+        <span class="sector-pill">Export</span>
+        <span class="sector-pill">Infrastructure</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div>
+    <p class="section-label" style="text-align:left;">The Patron</p>
+    <h2 class="about-heading">Who is Prince Abdul Mateen?</h2>
+    <p class="about-text">Prince Abdul Mateen is the fourth son of Sultan Hassanal Bolkiah of Brunei — one of the world's wealthiest and longest-reigning monarchs. Educated internationally in the UK and Australia, he holds a military commission and is deeply connected to Southeast Asia's rising generation of leaders.</p>
+    <p class="about-text">In 2024, his royal wedding became a global event — drawing heads of state, celebrities, and millions of social media viewers. But beyond his fame, Mateen is known for his genuine humility, love of sport, and his desire to use royal influence to lift up everyday people across Asia.</p>
+    <div class="quote-block">
+      "The strength of a nation is measured not by the wealth of its palace, but by the prosperity of its people."
+      <div class="quote-attr">— Programme philosophy, in the spirit of HRH Prince Abdul Mateen</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item"><div class="stat-num">10</div><div class="stat-label">Asian nations covered by the programme</div></div>
+    <div class="stat-item"><div class="stat-num">$78K</div><div class="stat-label">Total grants available per cycle</div></div>
+    <div class="stat-item"><div class="stat-num">2024</div><div class="stat-label">Year Mateen became a global icon</div></div>
+    <div class="stat-item"><div class="stat-num">6 mo.</div><div class="stat-label">Mentorship included with every grant</div></div>
+    <div class="stat-item"><div class="stat-num">3 tiers</div><div class="stat-label">From seed to legacy-level funding</div></div>
+    <div class="stat-item"><div class="stat-num">18–45</div><div class="stat-label">Eligible applicant age range</div></div>
+  </div>
+</section>
+
+<!-- ELIGIBILITY -->
+<section class="eligibility-section">
+  <p class="section-label">Who Can Apply</p>
+  <h2 class="section-title">Eligibility Requirements</h2>
+  <p class="section-sub">You must meet all criteria in your category to qualify</p>
+  <div class="elig-grid">
+    <div class="elig-card">
+      <div class="elig-icon">👤</div>
+      <div class="elig-title">About You</div>
+      <ul class="elig-list">
+        <li>Citizen or legal resident of an eligible Asian country</li>
+        <li>Age 18 to 45 years old</li>
+        <li>No prior criminal record</li>
+        <li>Fluent in English or Malay</li>
+      </ul>
+    </div>
+    <div class="elig-card">
+      <div class="elig-icon">🏢</div>
+      <div class="elig-title">About Your Business</div>
+      <ul class="elig-list">
+        <li>Legally registered in your home country</li>
+        <li>Operating for at least 3 months</li>
+        <li>Not currently receiving another government grant</li>
+        <li>Clear plan for how funds will be used</li>
+      </ul>
+    </div>
+    <div class="elig-card">
+      <div class="elig-icon">📄</div>
+      <div class="elig-title">Documents Needed</div>
+      <ul class="elig-list">
+        <li>Valid national ID or passport</li>
+        <li>Business registration certificate</li>
+        <li>3 months of bank statements</li>
+        <li>1–2 page business plan or pitch summary</li>
+      </ul>
+    </div>
+    <div class="elig-card">
+      <div class="elig-icon">🌏</div>
+      <div class="elig-title">Priority Sectors</div>
+      <ul class="elig-list">
+        <li>Technology and digital services</li>
+        <li>Agriculture and food production</li>
+        <li>Youth and women-led businesses</li>
+        <li>Cross-border Asian trade ventures</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CEREMONY -->
+<section class="ceremony-section">
+  <p class="section-label">The Gift Moment</p>
+  <h2 class="section-title">The Royal Presentation Ceremony</h2>
+  <div class="ceremony-visual">
+    <div class="ceremony-side">
+      <div class="ceremony-icon">🤴</div>
+      <div class="ceremony-name">HRH Prince Abdul Mateen</div>
+      <div class="ceremony-role">Royal Patron · Brunei</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="ceremony-arrow">🎁</div>
+      <div class="ceremony-gift-label">Presents the grant</div>
+    </div>
+    <div class="ceremony-side">
+      <div class="ceremony-icon">🧑‍💼</div>
+      <div class="ceremony-name">The Recipient</div>
+      <div class="ceremony-role">Business Owner · Asia</div>
+    </div>
+  </div>
+  <p class="ceremony-desc">Every successful applicant is invited to an annual royal ceremony in Brunei, where Prince Abdul Mateen personally hands over each grant — as a gift, not just a cheque. The event is photographed, celebrated, and shared across the region. Travel and accommodation are fully covered for all winners.</p>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="process">
+  <p class="section-label" style="text-align:center;">Application Process</p>
+  <h2 class="section-title">How to Apply — Step by Step</h2>
+  <p class="section-sub">Clear, fair, and fully online. No middlemen, no fees.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Confirm Your Country &amp; Eligibility</div>
+        <div class="step-desc">Check that your country is among the 10 eligible nations and that you meet the personal and business criteria above. Use the online eligibility checker on the portal.</div>
+        <span class="step-tag">5 minutes · Free</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Register on the Grant Portal</div>
+        <div class="step-desc">Create a profile with your name, country, business details, and contact information. You will receive a unique applicant ID to track your submission.</div>
+        <span class="step-tag">Email verification required</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Select Your Grant Tier</div>
+        <div class="step-desc">Choose between the Seed Gift ($8,000), Growth Gift ($20,000), or Legacy Gift ($50,000) based on your business stage and intended use of funds.</div>
+        <span class="step-tag">One tier per applicant</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-title">Submit Your Business Plan &amp; Documents</div>
+        <div class="step-desc">Upload your registration certificate, bank statements, national ID, and a concise business plan describing your vision and how you will use the grant.</div>
+        <span class="step-tag">PDF format · Max 10MB per file</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-title">Panel Review by Royal Advisors</div>
+        <div class="step-desc">The Prince's advisory panel — made up of regional business leaders and government officials — reviews every application. Shortlisted candidates are contacted within 21 working days.</div>
+        <span class="step-tag">21 business days</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-title">Virtual Interview (Shortlisted Only)</div>
+        <div class="step-desc">Shortlisted applicants attend a 20-minute virtual interview with two members of the advisory panel. This is your chance to present your business vision directly.</div>
+        <span class="step-tag">Online · Scheduled by email</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">7</div>
+      <div>
+        <div class="step-title">Royal Ceremony &amp; Gift Presentation</div>
+        <div class="step-desc">Winners fly to Brunei for the annual ceremony. Prince Abdul Mateen personally presents each grant as a symbolic gift on stage. Flights and accommodation are covered by the programme.</div>
+        <span class="step-tag">Travel covered · Annual event</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">8</div>
+      <div>
+        <div class="step-title">Funds Disbursed + 6-Month Mentorship</div>
+        <div class="step-desc">Grant money is transferred within 5 working days of the ceremony. All recipients also enter a 6-month mentorship programme with senior advisors from the Prince's pan-Asian network.</div>
+        <span class="step-tag">Bank transfer + mentor access</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section class="apply-section" id="apply">
+  <p class="section-label">Begin Your Journey</p>
+  <h2 class="apply-title">Apply for the Royal Grant</h2>
+  <p class="apply-sub">Submit your details below. Every application is reviewed by the Prince's team — no dream is too big.</p>
+  <form class="apply-form" id="applyForm" action="https://formspree.io/f/xqeoqbrb" method="POST">
+    <div class="apply-row">
+      <input class="apply-input" type="text" name="First Name" placeholder="First Name" required />
+      <input class="apply-input" type="text" name="Last Name" placeholder="Last Name" required />
+    </div>
+    <input class="apply-input" type="text" name="Business Name" placeholder="Business Name" required />
+    <select class="apply-select" name="Country" required>
+      <option value="" disabled selected>Select Your Country</option>
+      <option>🇧🇳 Brunei</option>
+      <option>🇲🇾 Malaysia</option>
+      <option>🇮🇩 Indonesia</option>
+      <option>🇵🇭 Philippines</option>
+      <option>🇸🇬 Singapore</option>
+      <option>🇹🇭 Thailand</option>
+      <option>🇻🇳 Vietnam</option>
+      <option>🇵🇰 Pakistan</option>
+      <option>🇧🇩 Bangladesh</option>
+      <option>🇯🇵 Japan</option>
+    </select>
+    <select class="apply-select" name="Grant Tier" required>
+      <option value="" disabled selected>Select Grant Tier</option>
+      <option>Seed Gift — $8,000 (Starter)</option>
+      <option>Growth Gift — $20,000 (Scaling)</option>
+      <option>Legacy Gift — $50,000 (Established)</option>
+    </select>
+    <select class="apply-select" name="Business Sector" required>
+      <option value="" disabled selected>Business Sector</option>
+      <option>Technology &amp; Digital</option>
+      <option>Food &amp; Agriculture</option>
+      <option>Retail &amp; Commerce</option>
+      <option>Health &amp; Wellness</option>
+      <option>Education</option>
+      <option>Manufacturing</option>
+      <option>Creative Arts &amp; Media</option>
+      <option>Other</option>
+    </select>
+    <input class="apply-input" type="email" name="email" placeholder="Email Address" required />
+    <textarea class="apply-textarea" name="Business Pitch" placeholder="Briefly describe your business and what you will use the grant for (2–3 sentences)" required></textarea>
+    <input type="hidden" name="_subject" value="✦ New Grant Application — Abdul Mateen Asia Business Grant" />
+    <input type="hidden" name="_next" value="" />
+    <button class="apply-btn" type="submit">Submit Application to Royal Panel →</button>
+    <div class="success-msg" id="successMsg" style="display:none;">
+      ✦ Application Received!<br>
+      <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#a89060;font-style:normal;">The Royal Advisory Panel will review your submission and contact you within 21 working days.</span>
+    </div>
+  </form>
+</section>
+
+<footer>
+  ✦ The Abdul Mateen Asia Business Grant &nbsp;·&nbsp; Royal Patronage Programme &nbsp;·&nbsp; School Project Concept &nbsp;·&nbsp; 2025–2026
+</footer>
+
+<script>
+  const form = document.getElementById('applyForm');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const btn = form.querySelector('.apply-btn');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    const data = new FormData(form);
+
+    fetch('https://formspree.io/f/xqeoqbrb', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(response) {
+      if (response.ok) {
+        form.reset();
+        btn.style.display = 'none';
+        const msg = document.getElementById('successMsg');
+        msg.style.display = 'block';
+        msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        btn.textContent = 'Submit Application to Royal Panel →';
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        alert('Something went wrong. Please try again.');
+      }
+    })
+    .catch(function() {
+      btn.textContent = 'Submit Application to Royal Panel →';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      alert('Network error. Please check your connection and try again.');
+    });
+  });
+</script>
+
+</body>
+</html>
